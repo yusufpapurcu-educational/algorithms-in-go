@@ -5,29 +5,29 @@ import (
 )
 
 // QuickSort Algoritması
-func quickSort(a []int) []int {
-	if len(a) < 2 {
-		return a
+func quickSort(dizi []int) []int {
+	if len(dizi) < 2 {
+		return dizi
 	}
 
-	left, right := 0, len(a)-1
+	left, right := 0, len(dizi)-1
 
 	// Dayanak Seçimi
-	pivot := rand.Int() % len(a)
+	pivot := rand.Int() % len(dizi)
 
-	a[pivot], a[right] = a[right], a[pivot]
+	dizi[pivot], dizi[right] = dizi[right], dizi[pivot]
 
-	for i := range a {
-		if a[i] < a[right] {
-			a[left], a[i] = a[i], a[left]
+	for i := range dizi {
+		if dizi[i] < dizi[right] {
+			dizi[left], dizi[i] = dizi[i], dizi[left]
 			left++
 		}
 	}
 
-	a[left], a[right] = a[right], a[left]
+	dizi[left], dizi[right] = dizi[right], dizi[left]
 
-	quickSort(a[:left])
-	quickSort(a[left+1:])
+	quickSort(dizi[:left])
+	quickSort(dizi[left+1:])
 
-	return a
+	return dizi
 }
