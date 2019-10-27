@@ -6,33 +6,35 @@ import (
 )
 
 func TestQuickSort(t *testing.T) {
-	for _, test := range tests {
-		quickSort(test.input)
-		for i := range test.expected {
-			if test.input[i] != test.expected[i] {
-				t.Errorf("QuickSorted = %q, expected %q.",
+	for _, test := range tests { // Testler içerisinde dolanıyoruz
+		quickSort(test.input)          // Fonksiyona test.input'u verdik. Fonksiyon bitinde test.input sıralanmış olacak.
+		for i := range test.expected { // Burada sıralanan ile beklenen dizilerini karşılaştırmak için döngüye girdik.
+			if test.input[i] != test.expected[i] { // İsterseniz test.expected listesinden bir değeri bozarak kontrol edi etmediğine bakabilirsiniz.
+				t.Errorf("QuickSorted = %d, expected %d.",
 					test.input, test.expected)
 			}
 		}
 	}
 }
 
+// Tamamen test ile aynı sadece Benchmark
 func BenchmarkQuickSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		for _, test := range tests {
 			quickSort(test.input)
 			for i := range test.expected {
 				if test.input[i] != test.expected[i] {
-					log.Fatalf("Expected : %q, Sorted : %q", test.input, test.expected)
+					log.Fatalf("Expected : %d, Sorted : %d", test.input, test.expected)
 				}
 			}
 		}
 	}
 }
 
-var tests = []struct {
-	input    []int
-	expected []int
+//Eğer tests struct dizisindeki değerler doğru olmasına rağmen go test hata veriyorsa algoritmada sorun var demektir.
+var tests = []struct { // Test dizimiz. İçinde örnek ve cevaplar var.
+	input    []int // Girdi
+	expected []int // Beklenen
 }{
 	{
 		input:    []int{9, 4, 7, 1, -6, 8, -3, 5, -9, 2},
