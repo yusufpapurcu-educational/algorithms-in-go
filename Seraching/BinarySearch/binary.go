@@ -1,7 +1,7 @@
-package binaryserach
+package binarysearch
 
 // Search fonksiyonu bizim BinarySerach algoritmamız
-func Search(n int, f func(int) bool) int { // Burada dizi uzunluğu ve fonksiyon alma amacı fazladan dizi oluşturmadan gelen fonksiyonu kullanarak büyük ya da küçük olduğunu öğrenmek.
+func BinarySearch(n int, f func(int) bool) int { // Burada dizi uzunluğu ve fonksiyon alma amacı fazladan dizi oluşturmadan gelen fonksiyonu kullanarak büyük ya da küçük olduğunu öğrenmek.
 
 	i, j := 0, n // i degiskeni istenen sayının indexini alacak. Simdilik 0.
 

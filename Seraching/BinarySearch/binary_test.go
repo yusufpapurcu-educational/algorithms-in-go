@@ -1,4 +1,4 @@
-package binaryserach
+package binarysearch
 
 import (
 	"fmt"
@@ -11,7 +11,7 @@ func TestBinarySearch(t *testing.T) {
 	a := []int{1, 3, 6, 10, 15, 21, 28, 36, 45, 55} // Test Dizisi
 	x := a[rand.Int()%len(a)]                       // Istenen eleman
 
-	i := Search(len(a), func(i int) bool { return a[i] >= x }) // Arama Algoritması
+	i := BinarySearch(len(a), func(i int) bool { return a[i] >= x }) // Arama Algoritması
 	if i < len(a) && a[i] == x {
 		fmt.Printf("%d Sayısı dizinin %d. Indexinde bulundu. Dizi :  %v\n", x, i, a)
 	} else {
@@ -24,7 +24,7 @@ func BenchmarkBinarySearch(b *testing.B) {
 		a := []int{1, 3, 6, 10, 15, 21, 28, 36, 45, 55} // Test Dizisi
 		x := a[rand.Int()%len(a)]                       // Istenen eleman
 
-		i := Search(len(a), func(i int) bool { return a[i] >= x }) // Arama Algoritması
+		i := BinarySearch(len(a), func(i int) bool { return a[i] >= x }) // Arama Algoritması
 		if i < len(a) && a[i] == x {
 			//			fmt.Printf("%d Sayısı dizinin %d. Indexinde bulundu. Dizi :  %v\n", x, i, a)
 		} else {
