@@ -26,7 +26,7 @@ func BenchmarkBinarySearch(b *testing.B) {
 
 		i := Search(len(a), func(i int) bool { return a[i] >= x }) // Arama Algoritması
 		if i < len(a) && a[i] == x {
-			fmt.Printf("%d Sayısı dizinin %d. Indexinde bulundu. Dizi :  %v\n", x, i, a)
+			//			fmt.Printf("%d Sayısı dizinin %d. Indexinde bulundu. Dizi :  %v\n", x, i, a)
 		} else {
 			log.Fatalf("%d Sayısı, %v Dizisi içinde bulunamadı\n", x, a)
 		}
