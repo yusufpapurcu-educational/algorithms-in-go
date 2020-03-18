@@ -1,4 +1,4 @@
-package LinearSearch
+package linearsearch
 
 func LinearSearch(array []int, wanted int) int {
 	for i := range array {

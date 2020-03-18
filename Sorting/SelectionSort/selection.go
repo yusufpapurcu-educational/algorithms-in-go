@@ -1,4 +1,4 @@
-package SelectionSort
+package selectionsort
 
 func SelectionSort(items []int) {
 	var n = len(items)

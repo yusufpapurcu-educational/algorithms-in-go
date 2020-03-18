@@ -1,16 +1,16 @@
-package selectionsort
+package insertionsort
 
 import (
 	"log"
 	"testing"
 )
 
-func TestSelectionSort(t *testing.T) {
+func TestInsertionSort(t *testing.T) {
 	for _, test := range tests { // Testler içerisinde dolanıyoruz
-		SelectionSort(test.input)      // Fonksiyona test.input'u verdik. Fonksiyon bitinde test.input sıralanmış olacak.
+		insertionsort(test.input)      // Fonksiyona test.input'u verdik. Fonksiyon bitinde test.input sıralanmış olacak.
 		for i := range test.expected { // Burada sıralanan ile beklenen dizilerini karşılaştırmak için döngüye girdik.
 			if test.input[i] != test.expected[i] { // İsterseniz test.expected listesinden bir değeri bozarak kontrol edi etmediğine bakabilirsiniz.
-				t.Errorf("SelectionSorted = %d, expected %d.",
+				t.Errorf("InsertionSorted = %d, expected %d.",
 					test.input, test.expected)
 			}
 		}
@@ -18,10 +18,10 @@ func TestSelectionSort(t *testing.T) {
 }
 
 // Tamamen test ile aynı sadece Benchmark
-func BenchmarkSelectionSort(b *testing.B) {
+func BenchmarkInsertionSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		for _, test := range tests {
-			SelectionSort(test.input)
+			insertionsort(test.input)
 			for i := range test.expected {
 				if test.input[i] != test.expected[i] {
 					log.Fatalf("Expected : %d, Sorted : %d", test.input, test.expected)
