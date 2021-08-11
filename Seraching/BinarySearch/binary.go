@@ -1,19 +1,19 @@
 package binarysearch
 
-// Search fonksiyonu bizim BinarySerach algoritmamız
-func BinarySearch(n int, f func(int) bool) int { // Burada dizi uzunluğu ve fonksiyon alma amacı fazladan dizi oluşturmadan gelen fonksiyonu kullanarak büyük ya da küçük olduğunu öğrenmek.
+// In here we don't take any data actually. We just take length of array and function that will lead the way.
+// isLittleThan function takes a index and compare element with wanted number.
+func BinarySearch(arrayLength int, isLittleThan func(int) bool) int {
+	answer, endFlag := 0, arrayLength
 
-	i, j := 0, n // i degiskeni istenen sayının indexini alacak. Simdilik 0.
+	for answer < endFlag {
+		middleFlag := answer + (endFlag-answer)/2
 
-	for i < j {
-		h := i + (j-i)/2 // Burada aranan elemanı bulmak için kullanacağımız dayank belirleniyor.
-
-		if !f(h) { // Dizinin ortasındaki rakam aranan rakamdan büyük mü, küçük mü o hesaplanıyor.
-			i = h + 1 // Eğer aranan eleman dayanaktan büyük ise i yeniden tanımlanıyor.
+		if !isLittleThan(middleFlag) {
+			answer = middleFlag + 1 // Look second half
 		} else {
-			j = h // Küçük ise üst değer dayanağa eşitleniyor.
+			endFlag = middleFlag // Look first half
 		}
 	}
-	// Döngü bitince elde edilen i değeri aranan sayının indexini verir.
-	return i
+
+	return answer
 }
